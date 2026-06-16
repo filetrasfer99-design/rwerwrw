@@ -1,0 +1,1851 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CA Foundation Accounts 2025-26 | Complete Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0d1b2a;
+  --navy-light: #1a2d42;
+  --blue: #1565c0;
+  --blue-light: #1976d2;
+  --accent: #00b894;
+  --accent-dark: #00897b;
+  --gold: #f9a825;
+  --red: #e53935;
+  --purple: #6c2eb9;
+  --bg: #eef2ff;
+  --card: #ffffff;
+  --text: #1a1a2e;
+  --text-muted: #5f6368;
+  --border: #e0e7ff;
+  --sidebar-w: 300px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  position: fixed;
+  top: 0; left: 0;
+  width: var(--sidebar-w);
+  height: 100vh;
+  background: var(--navy);
+  z-index: 1000;
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-track { background: var(--navy-light); }
+.sidebar::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+.sidebar-brand {
+  padding: 20px 20px 16px;
+  background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 100%);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.sidebar-brand .brand-icon { font-size: 32px; margin-bottom: 8px; }
+.sidebar-brand h2 {
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.sidebar-brand p { color: rgba(255,255,255,0.75); font-size: 12px; margin-top: 3px; }
+.close-btn {
+  position: absolute;
+  top: 16px; right: 16px;
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: #fff;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+.close-btn:hover { background: rgba(255,255,255,0.3); }
+
+.sidebar-progress {
+  padding: 14px 20px;
+  background: rgba(0,184,148,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.progress-label { color: rgba(255,255,255,0.7); font-size: 11px; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.8px; }
+.progress-bar-outer { background: rgba(255,255,255,0.1); border-radius: 99px; height: 6px; overflow: hidden; }
+.progress-bar-inner { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--accent), var(--gold)); width: 0%; transition: width 0.5s ease; }
+
+.sidebar-section-label {
+  padding: 14px 20px 6px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.35);
+  font-weight: 600;
+}
+
+.sidebar-nav { flex: 1; padding-bottom: 20px; }
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  font-size: 13px;
+  border-left: 3px solid transparent;
+  transition: 0.2s;
+  line-height: 1.4;
+}
+.sidebar-nav a:hover {
+  background: rgba(255,255,255,0.07);
+  color: #fff;
+  border-left-color: var(--accent);
+}
+.sidebar-nav a.active {
+  background: rgba(0,184,148,0.12);
+  color: var(--accent);
+  border-left-color: var(--accent);
+}
+.ch-num {
+  min-width: 24px; height: 24px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  flex-shrink: 0;
+}
+.sidebar-nav a:hover .ch-num,
+.sidebar-nav a.active .ch-num { background: var(--accent); color: #fff; }
+
+.difficulty-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+.dot-easy { background: var(--accent); }
+.dot-medium { background: var(--gold); }
+.dot-hard { background: var(--red); }
+
+/* ===== OVERLAY ===== */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+}
+.overlay.show { opacity: 1; pointer-events: all; }
+
+/* ===== MAIN CONTENT ===== */
+.main-content {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  min-width: 0;
+}
+
+/* ===== STICKY HEADER ===== */
+.top-bar {
+  position: sticky;
+  top: 0;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+  padding: 12px 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.menu-btn {
+  display: none;
+  background: var(--blue);
+  border: none;
+  color: #fff;
+  width: 38px; height: 38px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.top-bar-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+}
+.top-bar-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+.tbadge {
+  padding: 3px 10px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.tbadge-blue { background: #e3f2fd; color: var(--blue); }
+.tbadge-green { background: #e8f5e9; color: var(--accent-dark); }
+.tbadge-gold { background: #fff8e1; color: #e65100; }
+
+/* ===== HERO ===== */
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 60%, var(--purple) 100%);
+  padding: 56px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(0,184,148,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: 100px;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(249,168,37,0.1) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero-eyebrow {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+.hero h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+.hero h1 span { color: var(--gold); }
+.hero-sub {
+  color: rgba(255,255,255,0.8);
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 580px;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+.hero-stats {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+.hstat {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 12px;
+  padding: 14px 20px;
+  text-align: center;
+}
+.hstat-num {
+  font-family: 'Poppins', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--gold);
+  line-height: 1;
+}
+.hstat-label { color: rgba(255,255,255,0.7); font-size: 12px; margin-top: 4px; }
+
+/* ===== OVERVIEW CARDS ===== */
+.overview-section {
+  padding: 40px 40px 20px;
+}
+.overview-section h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.overview-section h2::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blue-light), transparent);
+  border-radius: 1px;
+}
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.ov-card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.ov-icon {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.ov-info { font-family: 'Poppins', sans-serif; }
+.ov-num { font-size: 22px; font-weight: 800; color: var(--navy); }
+.ov-label { font-size: 12px; color: var(--text-muted); font-weight: 400; }
+
+/* Important Note Box */
+.imp-note {
+  background: linear-gradient(135deg, #fff8e1, #fffde7);
+  border: 1px solid #f9a825;
+  border-radius: 14px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.imp-note .icon { font-size: 20px; flex-shrink: 0; }
+.imp-note p { font-size: 13.5px; color: #5d4037; line-height: 1.6; }
+.imp-note strong { color: #e65100; }
+
+/* ===== CHAPTER SECTIONS ===== */
+.chapters-wrapper { padding: 0 40px 60px; }
+
+.chapter-section {
+  background: var(--card);
+  border-radius: 20px;
+  margin-bottom: 32px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  scroll-margin-top: 80px;
+  transition: box-shadow 0.3s;
+}
+.chapter-section:hover { box-shadow: 0 8px 32px rgba(21,101,192,0.1); }
+
+/* Chapter Header */
+.ch-header {
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.ch-badge-num {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+.ch-header-info { flex: 1; }
+.ch-header-info h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.ch-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.tag {
+  padding: 3px 10px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.tag-easy { background: #e8f5e9; color: #2e7d32; }
+.tag-medium { background: #fff3e0; color: #e65100; }
+.tag-hard { background: #fce4ec; color: #c62828; }
+.tag-marks { background: #e3f2fd; color: #1565c0; }
+
+.ch-toggle {
+  font-size: 18px;
+  color: var(--text-muted);
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+.ch-toggle.open { transform: rotate(180deg); }
+
+/* Chapter Body */
+.ch-body { display: none; padding: 28px 32px 32px; }
+.ch-body.visible { display: block; }
+
+/* Topic list */
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+  margin: 16px 0 24px;
+}
+.topic-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 14px;
+  background: #f8faff;
+  border: 1px solid #e3ecff;
+  border-radius: 10px;
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.5;
+}
+.topic-item .ti-dot {
+  width: 8px; height: 8px;
+  background: var(--blue-light);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+/* Explanation Box */
+.explanation-box {
+  background: linear-gradient(135deg, #f0f4ff, #f8f0ff);
+  border: 1px solid #d0d8ff;
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+}
+.box-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--blue);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.explanation-box p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #2d3748;
+}
+
+/* Formula / Rule Box */
+.formula-box {
+  background: var(--navy);
+  color: #e0e7ff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.formula-box .formula-title {
+  color: var(--gold);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+}
+.formula-box span.highlight { color: var(--accent); font-weight: 700; }
+.formula-box span.gold { color: var(--gold); }
+
+/* Section Heading */
+.section-heading {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 22px 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-heading .sh-icon { font-size: 16px; }
+
+/* Sample Questions */
+.question-card {
+  border: 1px solid #e3ecff;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.question-header {
+  padding: 14px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  background: #f8faff;
+}
+.q-badge {
+  background: var(--blue);
+  color: #fff;
+  padding: 2px 9px;
+  border-radius: 99px;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-family: 'Poppins', sans-serif;
+}
+.question-header p {
+  font-size: 14px;
+  color: var(--navy);
+  font-weight: 500;
+  flex: 1;
+  line-height: 1.6;
+}
+.question-header .qtoggle { font-size: 14px; color: var(--text-muted); flex-shrink: 0; transition: 0.3s; }
+.question-header .qtoggle.open { transform: rotate(180deg); }
+.question-solution {
+  padding: 16px 18px;
+  border-top: 1px solid #e3ecff;
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: #2d3748;
+  background: #fff;
+  display: none;
+}
+.question-solution.show { display: block; }
+.sol-step {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.step-num {
+  background: var(--accent);
+  color: #fff;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.table-simple {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin: 10px 0;
+}
+.table-simple th {
+  background: #1565c0;
+  color: #fff;
+  padding: 8px 12px;
+  text-align: left;
+  font-weight: 600;
+}
+.table-simple td {
+  padding: 7px 12px;
+  border-bottom: 1px solid #e3ecff;
+  color: #2d3748;
+}
+.table-simple tr:nth-child(even) td { background: #f8faff; }
+.table-simple .text-right { text-align: right; }
+.table-simple .total-row td { font-weight: 700; border-top: 2px solid #1565c0; background: #e3f2fd; }
+
+/* Video Card */
+.video-card {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+  border-radius: 16px;
+  padding: 20px 24px;
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.teacher-avatar {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+  border: 2px solid rgba(255,255,255,0.3);
+}
+.teacher-details { flex: 1; }
+.teacher-details h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.teacher-details p { color: rgba(255,255,255,0.8); font-size: 13px; }
+.teacher-details .stars { color: var(--gold); font-size: 14px; margin-right: 4px; }
+.watch-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ff0000;
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 99px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  transition: 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.watch-btn:hover { background: #cc0000; transform: scale(1.02); }
+
+/* Exam Tip */
+.exam-tip {
+  background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+  border: 1px solid #a5d6a7;
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.exam-tip .et-icon { font-size: 18px; flex-shrink: 0; }
+.exam-tip p { font-size: 13px; color: #1b5e20; line-height: 1.65; }
+.exam-tip strong { color: #2e7d32; }
+
+/* Memory trick box */
+.memory-trick {
+  background: linear-gradient(135deg, #fce4ec, #fff0f5);
+  border: 1px solid #f48fb1;
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.memory-trick p { font-size: 13px; color: #880e4f; line-height: 1.65; }
+.memory-trick strong { color: #c62828; }
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 20px 0;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  body { display: block; }
+  .sidebar {
+    transform: translateX(-100%);
+    z-index: 2000;
+  }
+  .sidebar.open { transform: translateX(0); }
+  .close-btn { display: flex; }
+  .main-content { margin-left: 0; }
+  .top-bar { padding: 12px 20px; }
+  .menu-btn { display: flex; }
+  .hero { padding: 36px 24px; }
+  .hero h1 { font-size: 28px; }
+  .overview-section { padding: 28px 20px 16px; }
+  .chapters-wrapper { padding: 0 20px 40px; }
+  .ch-header { padding: 18px 20px; }
+  .ch-body { padding: 20px 20px 24px; }
+  .video-card { flex-direction: column; align-items: flex-start; }
+  .hero-stats { gap: 12px; }
+  .hstat { padding: 12px 16px; }
+  .hstat-num { font-size: 20px; }
+}
+
+/* ===== SCROLL ANIMATION ===== */
+.chapter-section { animation: fadeUp 0.4s ease both; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Footer */
+.footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  padding: 24px;
+  font-size: 13px;
+  margin-top: 40px;
+}
+.footer strong { color: var(--accent); }
+
+/* color themes for chapters */
+.color-1 { background: linear-gradient(135deg, #1565c0, #1976d2); }
+.color-2 { background: linear-gradient(135deg, #00695c, #00897b); }
+.color-3 { background: linear-gradient(135deg, #6a1b9a, #8e24aa); }
+.color-4 { background: linear-gradient(135deg, #e65100, #fb8c00); }
+.color-5 { background: linear-gradient(135deg, #c62828, #e53935); }
+.color-6 { background: linear-gradient(135deg, #1565c0, #0288d1); }
+.color-7 { background: linear-gradient(135deg, #33691e, #558b2f); }
+.color-8 { background: linear-gradient(135deg, #4527a0, #5e35b1); }
+.color-9 { background: linear-gradient(135deg, #00695c, #00838f); }
+.color-10 { background: linear-gradient(135deg, #bf360c, #e64a19); }
+.color-11 { background: linear-gradient(135deg, #006064, #00838f); }
+.color-12 { background: linear-gradient(135deg, #4a148c, #6a1b9a); }
+.color-13 { background: linear-gradient(135deg, #880e4f, #ad1457); }
+.color-14 { background: linear-gradient(135deg, #1b5e20, #2e7d32); }
+.color-15 { background: linear-gradient(135deg, #0d47a1, #1565c0); }
+</style>
+</head>
+<body>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+<!-- ===== SIDEBAR ===== -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-icon">📚</div>
+    <h2>CA Foundation 2025-26</h2>
+    <p>Accounts – Paper 1 | 100 Marks</p>
+    <button class="close-btn" onclick="closeSidebar()">✕</button>
+  </div>
+  <div class="sidebar-progress">
+    <div class="progress-label">📈 Study Progress</div>
+    <div class="progress-bar-outer">
+      <div class="progress-bar-inner" id="progressBar"></div>
+    </div>
+    <div style="color:rgba(255,255,255,0.6);font-size:11px;margin-top:5px;" id="progressText">0 of 15 chapters opened</div>
+  </div>
+  <div class="sidebar-section-label">All Chapters</div>
+  <nav class="sidebar-nav" id="sidebarNav">
+    <a href="#ch1" onclick="markChapter(1);closeSidebar()"><span class="ch-num">01</span>Theoretical Framework<span class="difficulty-dot dot-easy"></span></a>
+    <a href="#ch2" onclick="markChapter(2);closeSidebar()"><span class="ch-num">02</span>Accounting Process<span class="difficulty-dot dot-medium"></span></a>
+    <a href="#ch3" onclick="markChapter(3);closeSidebar()"><span class="ch-num">03</span>Bank Reconciliation<span class="difficulty-dot dot-medium"></span></a>
+    <a href="#ch4" onclick="markChapter(4);closeSidebar()"><span class="ch-num">04</span>Inventories<span class="difficulty-dot dot-medium"></span></a>
+    <a href="#ch5" onclick="markChapter(5);closeSidebar()"><span class="ch-num">05</span>Depreciation Accounting<span class="difficulty-dot dot-medium"></span></a>
+    <a href="#ch6" onclick="markChapter(6);closeSidebar()"><span class="ch-num">06</span>Bills of Exchange<span class="difficulty-dot dot-hard"></span></a>
+    <a href="#ch7" onclick="markChapter(7);closeSidebar()"><span class="ch-num">07</span>Average Due Date<span class="difficulty-dot dot-hard"></span></a>
+    <a href="#ch8" onclick="markChapter(8);closeSidebar()"><span class="ch-num">08</span>Final Accounts<span class="difficulty-dot dot-medium"></span></a>
+    <a href="#ch9" onclick="markChapter(9);closeSidebar()"><span class="ch-num">09</span>Incomplete Records<span class="difficulty-dot dot-hard"></span></a>
+    <a href="#ch10" onclick="markChapter(10);closeSidebar()"><span class="ch-num">10</span>Non-Trading Org (NPO)<span class="difficulty-dot dot-medium"></span></a>
+    <a href="#ch11" onclick="markChapter(11);closeSidebar()"><span class="ch-num">11</span>Consignment Accounts<span class="difficulty-dot dot-hard"></span></a>
+    <a href="#ch12" onclick="markChapter(12);closeSidebar()"><span class="ch-num">12</span>Joint Venture<span class="difficulty-dot dot-hard"></span></a>
+    <a href="#ch13" onclick="markChapter(13);closeSidebar()"><span class="ch-num">13</span>Partnership Accounts<span class="difficulty-dot dot-hard"></span></a>
+    <a href="#ch14" onclick="markChapter(14);closeSidebar()"><span class="ch-num">14</span>Company Accounts<span class="difficulty-dot dot-hard"></span></a>
+    <a href="#ch15" onclick="markChapter(15);closeSidebar()"><span class="ch-num">15</span>Accounting Ratios<span class="difficulty-dot dot-easy"></span></a>
+  </nav>
+  <div style="padding:14px 20px;border-top:1px solid rgba(255,255,255,0.07);">
+    <div style="font-size:11px;color:rgba(255,255,255,0.4);text-align:center;">
+      🟢 Easy &nbsp;🟡 Medium &nbsp;🔴 Hard
+    </div>
+  </div>
+</aside>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <button class="menu-btn" id="menuBtn" onclick="openSidebar()">☰</button>
+    <div class="top-bar-title">📖 CA Foundation Accounts 2025-26</div>
+    <div class="top-bar-badges">
+      <span class="tbadge tbadge-blue">Paper 1</span>
+      <span class="tbadge tbadge-green">100 Marks</span>
+      <span class="tbadge tbadge-gold">ICAI New Scheme</span>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-eyebrow">ICAI New Scheme | 2025–2026</div>
+    <h1>CA Foundation<br><span>Accounts Complete</span><br>Study Guide</h1>
+    <p class="hero-sub">Sabse best teachers ke video links ke saath — 15 chapters, detailed explanations, practice questions aur exam tips. Apna CA career yahan se shuru karo! 🚀</p>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-num">15</div><div class="hstat-label">Total Chapters</div></div>
+      <div class="hstat"><div class="hstat-num">100</div><div class="hstat-label">Total Marks</div></div>
+      <div class="hstat"><div class="hstat-num">3 hrs</div><div class="hstat-label">Exam Duration</div></div>
+      <div class="hstat"><div class="hstat-num">40%</div><div class="hstat-label">Min. Pass Marks</div></div>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="overview-section">
+    <h2>📊 Syllabus Overview</h2>
+    <div class="overview-grid">
+      <div class="ov-card"><div class="ov-icon" style="background:#e3f2fd;">📋</div><div class="ov-info"><div class="ov-num">Subjective</div><div class="ov-label">Paper Type</div></div></div>
+      <div class="ov-card"><div class="ov-icon" style="background:#e8f5e9;">✅</div><div class="ov-info"><div class="ov-num">No Negative</div><div class="ov-label">Marking Scheme</div></div></div>
+      <div class="ov-card"><div class="ov-icon" style="background:#fff8e1;">⭐</div><div class="ov-info"><div class="ov-num">50 Marks</div><div class="ov-label">Aggregate to Pass</div></div></div>
+      <div class="ov-card"><div class="ov-icon" style="background:#fce4ec;">🎯</div><div class="ov-info"><div class="ov-num">40 Marks</div><div class="ov-label">Individual Paper</div></div></div>
+    </div>
+    <div class="imp-note">
+      <span class="icon">💡</span>
+      <p><strong>HIGH WEIGHTAGE CHAPTERS:</strong> Partnership Accounts, Company Accounts, Final Accounts, Depreciation aur BRS — in chapters se milake <strong>50–60+ marks</strong> aate hain. Inhe sabse pehle strong karo! Bills of Exchange aur Consignment bhi important hai.</p>
+    </div>
+  </section>
+
+  <!-- ===== ALL CHAPTERS ===== -->
+  <div class="chapters-wrapper">
+
+  <!-- CHAPTER 1 -->
+  <div class="chapter-section" id="ch1">
+    <div class="ch-header" onclick="toggleChapter('body1','toggle1')">
+      <div class="ch-badge-num color-1">01</div>
+      <div class="ch-header-info">
+        <h3>Theoretical Framework</h3>
+        <div class="ch-tags">
+          <span class="tag tag-easy">Foundation Level</span>
+          <span class="tag tag-marks">8–12 Marks</span>
+        </div>
+      </div>
+      <div class="ch-toggle" id="toggle1">▼</div>
+    </div>
+    <div class="ch-body" id="body1">
+      <div class="explanation-box">
+        <div class="box-label">📖 Chapter Overview</div>
+        <p>Yeh chapter Accounting ki neenv hai. Isme hum seekhte hain ki Accounting kya hai, iski zaroorat kyun hai, aur kaun se Concepts aur Principles use karke accounts banaye jaate hain. Theory question aate hain — agar aap clearly yaad karo to ye easy marks hain!</p>
+      </div>
+      <div class="section-heading"><span class="sh-icon">📌</span>Key Topics</div>
+      <div class="topics-grid">
+        <div class="topic-item"><div class="ti-dot"></div>Meaning, Scope & Objectives of Accounting</div>
+        <div class="topic-item"><div class="ti-dot"></div>Accounting Concepts & Conventions (12 types)</div>
+        <div class="topic-item"><div class="ti-dot"></div>Capital vs Revenue Expenditure & Receipts</div>
+        <div class="topic-item"><div class="ti-dot"></div>Contingent Assets & Contingent Liabilities</div>
+        <div class="topic-item"><div class="ti-dot"></div>Accounting Policies (AS-1)</div>
+        <div class="topic-item"><div class="ti-dot"></div>Valuation Principles & Accounting Estimates</div>
+      </div>
+      <div class="section-heading"><span class="sh-icon">📝</span>Core Concepts Explained</div>
+      <div class="explanation-box">
+        <div class="box-label">12 IMPORTANT ACCOUNTING CONCEPTS</div>
+        <p>
+          <strong>1. Entity Concept:</strong> Business aur Owner alag hain — Business ke accounts mein sirf business ke transactions aate hain.<br><br>
+          <strong>2. Going Concern Concept:</strong> Assume karo ki Business indefinitely chalti rahegi — isliye assets ko cost pe dikhate hain, not liquidation value.<br><br>
+          <strong>3. Money Measurement Concept:</strong> Sirf woh cheezein accounts mein record hoti hain jo paise mein measure ho sakti hain (Employee loyalty → record nahi hogi).<br><br>
+          <strong>4. Cost Concept / Historical Cost:</strong> Assets ko unki original cost pe record karo, market value pe nahi.<br><br>
+          <strong>5. Dual Aspect Concept:</strong> Har transaction ke do effects hote hain → <span style="color:#1565c0;font-weight:700;">Assets = Liabilities + Capital</span> (Golden Rule)<br><br>
+          <strong>6. Realization Concept:</strong> Revenue tab record karo jab earn ho — cash mile ya na mile (Credit sales bhi income hai).<br><br>
+          <strong>7. Accrual Concept:</strong> Revenue aur Expenses ko related period mein record karo, cash movement pe nahi.<br><br>
+          <strong>8. Matching Concept:</strong> Revenue ke saath related expenses match karo → Tab hi sahi profit pata chalega.<br><br>
+          <strong>9. Consistency Concept:</strong> Ek baar ek method choose karo aur baar baar use karo — comparison easy hoti hai.<br><br>
+          <strong>10. Conservatism / Prudence:</strong> "Anticipate no profit, but provide for all possible losses" — Sadguni businessman ki tarah sochna.<br><br>
+          <strong>11. Materiality Concept:</strong> Small/insignificant items ke liye strict rules follow karna zaruri nahi.<br><br>
+          <strong>12. Full Disclosure:</strong> Accounts mein saari important information clearly dikhao.
+        </p>
+      </div>
+      <div class="formula-box">
+        <div class="formula-title">📐 Capital vs Revenue — Quick Difference</div>
+        <span class="highlight">Capital Expenditure</span> = Benefit > 1 Year | Asset Create Hota Hai | Balance Sheet pe<br>
+        Examples: Purchase of Machine, Building Construction, Legal fees for property<br><br>
+        <span class="gold">Revenue Expenditure</span> = Benefit ≤ 1 Year | P&amp;L Account pe<br>
+        Examples: Salaries, Rent, Repairs to Machine, Purchase of Goods<br><br>
+        <span class="highlight">Capital Receipt</span> = Non-recurring | Capital Fund se (Loan, Sale of Asset)<br>
+        <span class="gold">Revenue Receipt</span> = Recurring | Operations se (Sales, Commission received)
+      </div>
+      <div class="section-heading"><span class="sh-icon">❓</span>Sample Questions &amp; Solutions</div>
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQ(this)">
+          <span class="q-badge">Q.1</span>
+          <p>Explain the Matching Concept. A company incurs advertising expense of ₹1,20,000 in March 2025 for a campaign that will benefit April-June 2025. How should this be treated?</p>
+          <span class="qtoggle">▼</span>
+        </div>
+        <div class="question-solution">
+          <p><strong>Matching Concept:</strong> Expenses ko us accounting period mein record karo jis period mein unse related revenue earn kiya gaya ho — chahe cash payment kab bhi hua ho.</p>
+          <p style="margin-top:12px;"><strong>Treatment of Advertising Expense:</strong></p>
+          <div class="sol-step"><div class="step-num">1</div><p>₹1,20,000 expense March 2025 mein hua lekin benefit April-June 2025 mein milega</p></div>
+          <div class="sol-step"><div class="step-num">2</div><p>March 2025 ke accounts mein ₹0 show hoga (no related revenue in March)</p></div>
+          <div class="sol-step"><div class="step-num">3</div><p>₹1,20,000 ko "Prepaid Advertising" (Asset) ki tarah Balance Sheet mein dikhao March 2025 mein</p></div>
+          <div class="sol-step"><div class="step-num">4</div><p>April-June 2025 mein ₹40,000/month P&L mein expense karo (₹1,20,000 ÷ 3 months)</p></div>
+          <p style="margin-top:10px;background:#e8f5e9;padding:10px;border-radius:8px;font-size:13px;"><strong>Result:</strong> Matching Concept ensure karta hai ki correct profit calculate ho — right period mein right expense.</p>
+        </div>
+      </div>
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQ(this)">
+          <span class="q-badge">Q.2</span>
+          <p>Classify the following as Capital or Revenue Expenditure: (a) ₹50,000 spent on whitewashing factory (b) ₹2,00,000 spent on extension of factory building (c) ₹5,000 spent on carriage for new machine (d) ₹15,000 spent on annual maintenance of machine</p>
+          <span class="qtoggle">▼</span>
+        </div>
+        <div class="question-solution">
+          <table class="table-simple">
+            <tr><th>Item</th><th>Classification</th><th>Reason</th></tr>
+            <tr><td>(a) Whitewashing ₹50,000</td><td>Revenue Expenditure</td><td>Recurring, no new asset, P&L mein jata hai</td></tr>
+            <tr><td>(b) Factory Extension ₹2,00,000</td><td>Capital Expenditure</td><td>Existing building ka value badhaya, Balance Sheet mein</td></tr>
+            <tr><td>(c) Carriage for Machine ₹5,000</td><td>Capital Expenditure</td><td>Machine ki cost ka hissa — machine ke value mein add karo</td></tr>
+            <tr><td>(d) Annual Maintenance ₹15,000</td><td>Revenue Expenditure</td><td>Regular maintenance, recurring, P&L mein debit</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="exam-tip">
+        <span class="et-icon">🎯</span>
+        <p><strong>Exam Tip:</strong> Theory questions mein exact definition yaad karo + ek example zaroor likho. ICAI examiners step-by-step presentation ko marks dete hain. "Going Concern" aur "Matching Concept" MOST FREQUENTLY pooche jaate hain!</p>
+      </div>
+      <div class="video-card">
+        <div class="teacher-avatar">👨‍🏫</div>
+        <div class="teacher-details">
+          <h4>CA Nitin Goel — Best for Theory</h4>
+          <p><span class="stars">★★★★★</span>4.9 | Free Full Syllabus | Hindi + English | Concept Clarity</p>
+          <p style="margin-top:4px;font-size:12px;">Concepts ko real-life examples se explain karte hain — bilkul zero se samjhate hain</p>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=CA+Foundation+Theoretical+Framework+Nitin+Goel+free+2025" target="_blank" class="watch-btn">▶ Watch Free Lectures</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 2 -->
+  <div class="chapter-section" id="ch2">
+    <div class="ch-header" onclick="toggleChapter('body2','toggle2')">
+      <div class="ch-badge-num color-2">02</div>
+      <div class="ch-header-info">
+        <h3>Accounting Process (Journal, Ledger, Trial Balance)</h3>
+        <div class="ch-tags">
+          <span class="tag tag-medium">Moderate</span>
+          <span class="tag tag-marks">10–15 Marks</span>
+        </div>
+      </div>
+      <div class="ch-toggle" id="toggle2">▼</div>
+    </div>
+    <div class="ch-body" id="body2">
+      <div class="explanation-box">
+        <div class="box-label">📖 Chapter Overview</div>
+        <p>Yeh CA Accounts ka backbone hai — Journal se shuru hokar Trial Balance tak ki poori journey. Agar yeh chapter strong hai toh baaki chapters automatically easy ho jaate hain. Journal Entries sabse zyada practice karani chahiye.</p>
+      </div>
+      <div class="section-heading"><span class="sh-icon">📌</span>Key Topics</div>
+      <div class="topics-grid">
+        <div class="topic-item"><div class="ti-dot"></div>Source Documents & Vouchers</div>
+        <div class="topic-item"><div class="ti-dot"></div>Golden Rules of Accounting (3 Rules)</div>
+        <div class="topic-item"><div class="ti-dot"></div>Journal Entries with Narration</div>
+        <div class="topic-item"><div class="ti-dot"></div>Subsidiary Books (Day Books)</div>
+        <div class="topic-item"><div class="ti-dot"></div>Cash Book (Single, Double, Triple Column)</div>
+        <div class="topic-item"><div class="ti-dot"></div>Ledger Posting & Balancing</div>
+        <div class="topic-item"><div class="ti-dot"></div>Trial Balance (Preparation & Purpose)</div>
+        <div class="topic-item"><div class="ti-dot"></div>Rectification of Errors (4 Types)</div>
+      </div>
+      <div class="formula-box">
+        <div class="formula-title">🏆 GOLDEN RULES — Must Memorize</div>
+        <span class="highlight">Personal A/c:</span>  Debit the Receiver | Credit the Giver<br>
+        <span class="highlight">Real A/c:</span>      Debit what comes in | Credit what goes out<br>
+        <span class="highlight">Nominal A/c:</span>   Debit all Expenses/Losses | Credit all Income/Gains<br><br>
+        <span class="gold">Modern Approach (Alternative):</span><br>
+        Assets ↑ → Debit | Assets ↓ → Credit<br>
+        Liabilities ↑ → Credit | Liabilities ↓ → Debit<br>
+        Income ↑ → Credit | Expenses ↑ → Debit
+      </div>
+      <div class="section-heading"><span class="sh-icon">❓</span>Sample Questions</div>
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQ(this)">
+          <span class="q-badge">Q.1</span>
+          <p>Pass Journal Entries for: (a) Started business with cash ₹2,00,000 (b) Purchased goods for cash ₹50,000 (c) Sold goods on credit to Ram ₹30,000 (d) Paid salary ₹10,000 (e) Received commission ₹5,000</p>
+          <span class="qtoggle">▼</span>
+        </div>
+        <div class="question-solution">
+          <table class="table-simple">
+            <tr><th>Date</th><th>Particulars</th><th style="text-align:center;">Dr (₹)</th><th style="text-align:center;">Cr (₹)</th></tr>
+            <tr><td>(a)</td><td>Cash A/c Dr<br>&nbsp;&nbsp;&nbsp;To Capital A/c<br>(Being business started with cash)</td><td class="text-right">2,00,000</td><td class="text-right">2,00,000</td></tr>
+            <tr><td>(b)</td><td>Purchases A/c Dr<br>&nbsp;&nbsp;&nbsp;To Cash A/c<br>(Being goods purchased for cash)</td><td class="text-right">50,000</td><td class="text-right">50,000</td></tr>
+            <tr><td>(c)</td><td>Ram's A/c Dr<br>&nbsp;&nbsp;&nbsp;To Sales A/c<br>(Being goods sold on credit to Ram)</td><td class="text-right">30,000</td><td class="text-right">30,000</td></tr>
+            <tr><td>(d)</td><td>Salary A/c Dr<br>&nbsp;&nbsp;&nbsp;To Cash A/c<br>(Being salary paid)</td><td class="text-right">10,000</td><td class="text-right">10,000</td></tr>
+            <tr><td>(e)</td><td>Cash A/c Dr<br>&nbsp;&nbsp;&nbsp;To Commission Received A/c<br>(Being commission received)</td><td class="text-right">5,000</td><td class="text-right">5,000</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="memory-trick">
+        <span style="font-size:18px;margin-right:8px;">🧠</span>
+        <p><strong>Memory Trick:</strong> "PEARLS" — <strong>P</strong>ersonal, <strong>E</strong>xpenses/Losses, <strong>A</strong>ssets, <strong>R</strong>evenue, <strong>L</strong>iabilities, <strong>S</strong>tockholders Equity. Debit = DEAL (Dividends, Expenses, Assets, Losses). Credit = GIRLS (Gains, Income, Revenue, Liabilities, Stockholders Equity).</p>
+      </div>
+      <div class="video-card">
+        <div class="teacher-avatar">👨‍🏫</div>
+        <div class="teacher-details">
+          <h4>CA Anshul Agrawal — Best for Journal & Ledger</h4>
+          <p><span class="stars">★★★★★</span>4.8 | Systematic, Zero-to-Advanced | Hindi Medium</p>
+          <p style="margin-top:4px;font-size:12px;">Journal entries ko step-by-step systematically sikhate hain — beginners ke liye perfect</p>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=CA+Foundation+Accounting+Process+Journal+Ledger+Trial+Balance+2025+free+lectures" target="_blank" class="watch-btn">▶ Watch Free Lectures</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 3 -->
+  <div class="chapter-section" id="ch3">
+    <div class="ch-header" onclick="toggleChapter('body3','toggle3')">
+      <div class="ch-badge-num color-3">03</div>
+      <div class="ch-header-info">
+        <h3>Bank Reconciliation Statement (BRS)</h3>
+        <div class="ch-tags">
+          <span class="tag tag-medium">Moderate</span>
+          <span class="tag tag-marks">6–10 Marks</span>
+        </div>
+      </div>
+      <div class="ch-toggle" id="toggle3">▼</div>
+    </div>
+    <div class="ch-body" id="body3">
+      <div class="explanation-box">
+        <div class="box-label">📖 Chapter Overview</div>
+        <p>BRS ek aisa statement hai jo Cash Book aur Bank Pass Book ke balance mein difference ke karanon ko explain karta hai. Yeh chapter scoring hai — ek clear formula samajh lo, bus ho gaya!</p>
+      </div>
+      <div class="topics-grid">
+        <div class="topic-item"><div class="ti-dot"></div>Need & Purpose of BRS</div>
+        <div class="topic-item"><div class="ti-dot"></div>Causes of Difference (5 types)</div>
+        <div class="topic-item"><div class="ti-dot"></div>Format of BRS (Balance as per Cash Book)</div>
+        <div class="topic-item"><div class="ti-dot"></div>Format of BRS (Balance as per Pass Book)</div>
+        <div class="topic-item"><div class="ti-dot"></div>Favourable & Unfavourable Balance</div>
+        <div class="topic-item"><div class="ti-dot"></div>Amended Cash Book preparation</div>
+      </div>
+      <div class="formula-box">
+        <div class="formula-title">📐 BRS FORMAT (Starting from Cash Book Balance)</div>
+        Balance as per Cash Book (Dr / Favourable)        <span class="highlight">₹ XX,XXX</span><br>
+        ADD: Cheques issued but not presented to bank      <span class="gold">+ ₹ XX</span><br>
+        ADD: Direct deposits by customers in bank          <span class="gold">+ ₹ XX</span><br>
+        LESS: Cheques deposited but not cleared            <span class="highlight">- ₹ XX</span><br>
+        LESS: Bank charges debited by bank                 <span class="highlight">- ₹ XX</span><br>
+        LESS: Direct payments by bank (standing orders)    <span class="highlight">- ₹ XX</span><br>
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br>
+        <span class="gold">Balance as per Pass Book (should match)</span>    <span class="highlight">₹ XX,XXX</span>
+      </div>
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQ(this)">
+          <span class="q-badge">Q.1</span>
+          <p>Cash Book balance (Dr) = ₹12,500. Cheques issued but not presented = ₹3,200. Cheques deposited not credited = ₹2,800. Bank directly credited dividends = ₹1,500. Prepare BRS.</p>
+          <span class="qtoggle">▼</span>
+        </div>
+        <div class="question-solution">
+          <table class="table-simple">
+            <tr><th colspan="2">Bank Reconciliation Statement</th><th class="text-right">₹</th></tr>
+            <tr><td colspan="2">Balance as per Cash Book (Dr balance)</td><td class="text-right">12,500</td></tr>
+            <tr><td colspan="2">Add: Cheques issued but not presented to bank</td><td class="text-right">3,200</td></tr>
+            <tr><td colspan="2">Add: Dividends directly credited by bank (not in Cash Book)</td><td class="text-right">1,500</td></tr>
+            <tr><td colspan="2">Less: Cheques deposited but not yet credited</td><td class="text-right">(2,800)</td></tr>
+            <tr class="total-row"><td colspan="2"><strong>Balance as per Pass Book</strong></td><td class="text-right"><strong>14,400</strong></td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="exam-tip">
+        <span class="et-icon">🎯</span>
+        <p><strong>Exam Tip:</strong> BRS mein sabse common mistake yeh hai ki students Plus/Minus ulta kar dete hain. Rule yaad karo: <strong>Bank ne credit kiya → Cash Book mein add karo. Bank ne debit kiya → Cash Book se minus karo.</strong></p>
+      </div>
+      <div class="video-card">
+        <div class="teacher-avatar">📊</div>
+        <div class="teacher-details">
+          <h4>CA Hardik Manchanda — Best for BRS Numericals</h4>
+          <p><span class="stars">★★★★★</span>4.8 | Numericals Focus | Trick-based Teaching</p>
+          <p style="margin-top:4px;font-size:12px;">BRS ke tricks aur shortcuts clearly explain karte hain — scoring chapter ban jata hai</p>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=CA+Foundation+Bank+Reconciliation+Statement+BRS+Hardik+Manchanda+2025" target="_blank" class="watch-btn">▶ Watch Free Lectures</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 4 -->
+  <div class="chapter-section" id="ch4">
+    <div class="ch-header" onclick="toggleChapter('body4','toggle4')">
+      <div class="ch-badge-num color-4">04</div>
+      <div class="ch-header-info">
+        <h3>Inventories (Stock Valuation)</h3>
+        <div class="ch-tags"><span class="tag tag-medium">Moderate</span><span class="tag tag-marks">6–10 Marks</span></div>
+      </div>
+      <div class="ch-toggle" id="toggle4">▼</div>
+    </div>
+    <div class="ch-body" id="body4">
+      <div class="explanation-box">
+        <div class="box-label">📖 Chapter Overview</div>
+        <p>Inventory valuation mein hum closing stock ki value calculate karte hain. Yeh directly profit/loss ko affect karta hai — isliye ICAI ne ise AS-2 (Accounting Standard) se regulate kiya hai. FIFO aur Weighted Average Method sabse important hain.</p>
+      </div>
+      <div class="topics-grid">
+        <div class="topic-item"><div class="ti-dot"></div>Meaning of Inventory / Stock</div>
+        <div class="topic-item"><div class="ti-dot"></div>Valuation Principle: Lower of Cost or NRV</div>
+        <div class="topic-item"><div class="ti-dot"></div>FIFO Method (First In, First Out)</div>
+        <div class="topic-item"><div class="ti-dot"></div>Weighted Average Method (AVCO)</div>
+        <div class="topic-item"><div class="ti-dot"></div>Specific Identification Method</div>
+        <div class="topic-item"><div class="ti-dot"></div>AS-2 Provisions</div>
+      </div>
+      <div class="formula-box">
+        <div class="formula-title">📐 KEY FORMULA</div>
+        <span class="highlight">Closing Stock Value</span> = Lower of Cost or Net Realisable Value (NRV)<br><br>
+        <span class="gold">NRV</span> = Estimated Selling Price − Estimated Costs to Complete &amp; Sell<br><br>
+        <span class="highlight">Cost includes:</span> Purchase Price + Freight + Import Duties + Conversion Costs<br>
+        <span class="highlight">Cost EXCLUDES:</span> Admin overheads, selling costs, abnormal wastage
+      </div>
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQ(this)">
+          <span class="q-badge">Q.1</span>
+          <p>Calculate closing stock value using FIFO method. Purchases: Jan - 100 units @₹10, Feb - 200 units @₹12, Mar - 150 units @₹15. Sales: 300 units. Closing stock = 150 units.</p>
+          <span class="qtoggle">▼</span>
+        </div>
+        <div class="question-solution">
+          <p><strong>FIFO Method:</strong> Pehle jo aaya, pehle jaayega. Sales mein pehle January ka stock jaata hai.</p>
+          <table class="table-simple">
+            <tr><th>Lot</th><th>Units Available</th><th>Units Sold</th><th>Closing Stock</th><th>Rate</th><th>Value</th></tr>
+            <tr><td>Jan</td><td>100</td><td>100 (fully sold)</td><td>0</td><td>₹10</td><td>₹0</td></tr>
+            <tr><td>Feb</td><td>200</td><td>200 (fully sold)</td><td>0</td><td>₹12</td><td>₹0</td></tr>
+            <tr><td>Mar</td><td>150</td><td>0 (not sold)</td><td>150</td><td>₹15</td><td>₹2,250</td></tr>
+            <tr class="total-row"><td colspan="5"><strong>Closing Stock Value (FIFO)</strong></td><td><strong>₹2,250</strong></td></tr>
+          </table>
+          <p style="margin-top:10px;"><em>Note: Total sold = 100+200 = 300 units ✓ | Closing = 150 units from March batch ✓</em></p>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="teacher-avatar">📦</div>
+        <div class="teacher-details">
+          <h4>CA Nitin Goel — Inventory Chapter</h4>
+          <p><span class="stars">★★★★★</span>4.9 | FIFO, AVCO, NRV — Full Coverage</p>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=CA+Foundation+Inventories+Stock+Valuation+FIFO+AVCO+Nitin+Goel+2025" target="_blank" class="watch-btn">▶ Watch Free Lectures</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 5 -->
+  <div class="chapter-section" id="ch5">
+    <div class="ch-header" onclick="toggleChapter('body5','toggle5')">
+      <div class="ch-badge-num color-5">05</div>
+      <div class="ch-header-info">
+        <h3>Depreciation Accounting</h3>
+        <div class="ch-tags"><span class="tag tag-medium">Important</span><span class="tag tag-marks">8–14 Marks</span></div>
+      </div>
+      <div class="ch-toggle" id="toggle5">▼</div>
+    </div>
+    <div class="ch-body" id="body5">
+      <div class="explanation-box">
+        <div class="box-label">📖 Chapter Overview</div>
+        <p>Depreciation = Fixed Asset ki value ka gradual decrease. Yeh ek non-cash expense hai lekin profit ko affect karta hai. CA Foundation mein SLM aur WDV dono methods se questions aate hain. Asset Account aur Provision for Depreciation Account format bhi important hai.</p>
+      </div>
+      <div class="topics-grid">
+        <div class="topic-item"><div class="ti-dot"></div>Meaning, Causes & Need for Depreciation</div>
+        <div class="topic-item"><div class="ti-dot"></div>SLM — Straight Line Method</div>
+        <div class="topic-item"><div class="ti-dot"></div>WDV — Written Down Value Method</div>
+        <div class="topic-item"><div class="ti-dot"></div>Change of Method & its Impact</div>
+        <div class="topic-item"><div class="ti-dot"></div>Revision of Estimated Useful Life</div>
+        <div class="topic-item"><div class="ti-dot"></div>Sale, Disposal & Exchange of Asset</div>
+        <div class="topic-item"><div class="ti-dot"></div>Provision for Depreciation Account</div>
+        <div class="topic-item"><div class="ti-dot"></div>AS-6 (Depreciation Accounting)</div>
+      </div>
+      <div class="formula-box">
+        <div class="formula-title">📐 DEPRECIATION FORMULAS</div>
+        <span class="highlight">SLM (Fixed Installment Method):</span><br>
+        Annual Depreciation = (Cost − Residual Value) ÷ Useful Life<br>
+        % Rate = (Annual Depreciation ÷ Cost) × 100<br><br>
+        <span class="gold">WDV (Diminishing Balance Method):</span><br>
+        Annual Depreciation = WDV at beginning of year × Rate%<br>
+        WDV decreases every year → depreciation also decreases<br><br>
+        <span class="highlight">Profit/Loss on Disposal:</span><br>
+        = Sale Price − Book Value at date of sale<br>
+        (Book Value = Cost − Accumulated Depreciation)
+      </div>
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQ(this)">
+          <span class="q-badge">Q.1</span>
+          <p>A machine was purchased on 1st April 2021 for ₹1,00,000. Useful life = 5 years. Residual value = ₹10,000. Prepare Machine Account for first 3 years using SLM. Accounts close on 31st March.</p>
+          <span class="qtoggle">▼</span>
+        </div>
+        <div class="question-solution">
+          <div class="sol-step"><div class="step-num">1</div><p>Annual Depreciation (SLM) = (₹1,00,000 − ₹10,000) ÷ 5 = <strong>₹18,000 per year</strong></p></div>
+          <table class="table-simple">
+            <tr><th>Year</th><th>Opening WDV</th><th>Depreciation</th><th>Closing WDV</th></tr>
+            <tr><td>2021-22</td><td>₹1,00,000</td><td>₹18,000</td><td>₹82,000</td></tr>
+            <tr><td>2022-23</td><td>₹82,000</td><td>₹18,000</td><td>₹64,000</td></tr>
+            <tr><td>2023-24</td><td>₹64,000</td><td>₹18,000</td><td>₹46,000</td></tr>
+          </table>
+          <p style="margin-top:10px;background:#e3f2fd;padding:10px;border-radius:8px;"><strong>SLM Characteristic:</strong> Har saal equal depreciation = ₹18,000. WDV method mein har saal kam hoti rehti.</p>
+        </div>
+      </div>
+      <div class="exam-tip">
+        <span class="et-icon">🎯</span>
+        <p><strong>Exam Tip:</strong> <strong>SLM mein Depreciation Amount constant rehti hai, WDV mein percentage constant rehti hai.</strong> Asset sold ho to: Loss on Sale → Debit P&L. Profit on Sale → Credit P&L. Yeh bahut frequently poochha jaata hai!</p>
+      </div>
+      <div class="video-card">
+        <div class="teacher-avatar">🏭</div>
+        <div class="teacher-details">
+          <h4>CA Hardik Manchanda — Depreciation Expert</h4>
+          <p><span class="stars">★★★★★</span>4.8 | SLM, WDV, Change of Method — Sab covered</p>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=CA+Foundation+Depreciation+Accounting+SLM+WDV+Hardik+Manchanda+2025+free" target="_blank" class="watch-btn">▶ Watch Free Lectures</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 6 -->
+  <div class="chapter-section" id="ch6">
+    <div class="ch-header" onclick="toggleChapter('body6','toggle6')">
+      <div class="ch-badge-num color-6">06</div>
+      <div class="ch-header-info">
+        <h3>Bills of Exchange & Promissory Notes</h3>
+        <div class="ch-tags"><span class="tag tag-hard">Challenging</span><span class="tag tag-marks">8–12 Marks</span></div>
+      </div>
+      <div class="ch-toggle" id="toggle6">▼</div>
+    </div>
+    <div class="ch-body" id="body6">
+      <div class="explanation-box">
+        <div class="box-label">📖 Chapter Overview</div>
+        <p>Bills of Exchange ek credit instrument hai. Teen parties hoti hain — Drawer, Drawee, aur Payee. Journal entries dono parties (Drawer aur Drawee) ke books mein karni aati hai — yahi question pattern hota hai exam mein. Accommodation Bills aur Dishonor/Renewal bhi important topics hain.</p>
+      </div>
+      <div class="topics-grid">
+        <div class="topic-item"><div class="ti-dot"></div>Bill of Exchange: Definition, Parties</div>
+        <div class="topic-item"><div class="ti-dot"></div>Promissory Note vs Bill of Exchange</div>
+        <div class="topic-item"><div class="ti-dot"></div>Discounting, Endorsement, Collection</div>
+        <div class="topic-item"><div class="ti-dot"></div>Dishonour of Bill + Noting Charges</div>
+        <div class="topic-item"><div class="ti-dot"></div>Renewal of Bill</div>
+        <div class="topic-item"><div class="ti-dot"></div>Retirement of Bill (Rebate)</div>
+        <div class="topic-item"><div class="ti-dot"></div>Accommodation Bills</div>
+        <div class="topic-item"><div class="ti-dot"></div>Journal Entries in BOTH parties' books</div>
+      </div>
+      <div class="formula-box">
+        <div class="formula-title">📐 KEY TERMS — Bills of Exchange</div>
+        <span class="highlight">Drawer</span>    = Jo Bill draw karta hai (Creditor / Seller)<br>
+        <span class="gold">Drawee</span>    = Jis par Bill drawn hai (Debtor / Buyer) — Bill Accept karta hai → Acceptor<br>
+        <span class="highlight">Payee</span>     = Jise payment milegi (can be Drawer or third party)<br><br>
+        <span class="gold">Date of Maturity</span> = Due Date + 3 Days of Grace<br>
+        <span class="highlight">Discounting</span> = Bank se advance lena Bill ke against (before maturity)<br>
+        <span class="gold">Accommodation Bill</span> = Mutual help ke liye (koi actual trade nahi hoti)
+      </div>
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQ(this)">
+          <span class="q-badge">Q.1</span>
+          <p>A sold goods to B for ₹50,000 on 1st Jan 2025. A drew a bill on B for 3 months. B accepted the bill. On due date, B honours the bill. Pass journal entries in A's books and B's books.</p>
+          <span class="qtoggle">▼</span>
+        </div>
+        <div class="question-solution">
+          <p><strong>In A's Books (Drawer — Seller):</strong></p>
+          <table class="table-simple">
+            <tr><th>Date</th><th>Entry</th><th class="text-right">Dr ₹</th><th class="text-right">Cr ₹</th></tr>
+            <tr><td>1 Jan</td><td>B's A/c Dr → Sales A/c Cr (Goods sold)</td><td class="text-right">50,000</td><td class="text-right">50,000</td></tr>
+            <tr><td>1 Jan</td><td>Bills Receivable A/c Dr → B's A/c Cr (Bill accepted)</td><td class="text-right">50,000</td><td class="text-right">50,000</td></tr>
+            <tr><td>4 Apr*</td><td>Cash/Bank A/c Dr → Bills Receivable A/c Cr (Bill honoured)</td><td class="text-right">50,000</td><td class="text-right">50,000</td></tr>
+          </table>
+          <p style="margin-top:12px;"><strong>In B's Books (Drawee/Acceptor — Buyer):</strong></p>
+          <table class="table-simple">
+            <tr><th>Date</th><th>Entry</th><th class="text-right">Dr ₹</th><th class="text-right">Cr ₹</th></tr>
+            <tr><td>1 Jan</td><td>Purchases A/c Dr → A's A/c Cr (Goods purchased)</td><td class="text-right">50,000</td><td class="text-right">50,000</td></tr>
+            <tr><td>1 Jan</td><td>A's A/c Dr → Bills Payable A/c Cr (Bill accepted)</td><td class="text-right">50,000</td><td class="text-right">50,000</td></tr>
+            <tr><td>4 Apr*</td><td>Bills Payable A/c Dr → Bank A/c Cr (Bill honoured)</td><td class="text-right">50,000</td><td class="text-right">50,000</td></tr>
+          </table>
+          <p style="font-size:12px;color:#666;margin-top:8px;">* Due Date = 1 Jan + 3 months = 1 Apr + 3 days grace = 4th April 2025</p>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="teacher-avatar">📄</div>
+        <div class="teacher-details">
+          <h4>CA Nitin Goel — Bills of Exchange</h4>
+          <p><span class="stars">★★★★★</span>4.9 | Accommodation Bills se leke Dishonour tak — sab detail mein</p>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=CA+Foundation+Bills+of+Exchange+Promissory+Notes+Nitin+Goel+2025+free+lectures" target="_blank" class="watch-btn">▶ Watch Free Lectures</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 7 -->
+  <div class="chapter-section" id="ch7">
+    <div class="ch-header" onclick="toggleChapter('body7','toggle7')">
+      <div class="ch-badge-num color-7">07</div>
+      <div class="ch-header-info">
+        <h3>Average Due Date & Account Current</h3>
+        <div class="ch-tags"><span class="tag tag-hard">Challenging</span><span class="tag tag-marks">5–8 Marks</span></div>
+      </div>
+      <div class="ch-toggle" id="toggle7">▼</div>
+    </div>
+    <div class="ch-body" id="body7">
+      <div class="explanation-box">
+        <div class="box-label">📖 Chapter Overview</div>
+        <p>Average Due Date (ADD) woh single date hai jis din ek saath saari payments karne par na koi interest dena pade na milega. Account Current ek statement hai jo do parties ke beech transactions aur interest dono ko record karta hai — yeh ek sophisticated cash/credit ledger hai.</p>
+      </div>
+      <div class="topics-grid">
+        <div class="topic-item"><div class="ti-dot"></div>Average Due Date — Meaning & Calculation</div>
+        <div class="topic-item"><div class="ti-dot"></div>Red Ink Interest (when due date is BEFORE base date)</div>
+        <div class="topic-item"><div class="ti-dot"></div>Account Current — Meaning & Purpose</div>
+        <div class="topic-item"><div class="ti-dot"></div>Preparation of Account Current (Interest columns method)</div>
+        <div class="topic-item"><div class="ti-dot"></div>Calculation of Interest in Account Current</div>
+      </div>
+      <div class="formula-box">
+        <div class="formula-title">📐 AVERAGE DUE DATE FORMULA</div>
+        <span class="highlight">Step 1:</span> Select a Base Date (usually earliest due date)<br>
+        <span class="highlight">Step 2:</span> Calculate Days from Base Date to each Due Date<br>
+        <span class="highlight">Step 3:</span> Products = Amount × Days<br>
+        <span class="gold">ADD Formula:</span><br>
+        ADD = Base Date + (Total Products ÷ Total Amount) days<br><br>
+        <span class="highlight">Red Ink Interest:</span> Jab due date base date se pehle ho → Interest ko opposite side mein likho (Red Ink)
+      </div>
+      <div class="exam-tip">
+        <span class="et-icon">🎯</span>
+        <p><strong>Exam Tip:</strong> Average Due Date mein Base Date choice bahut important hai — base date select karo carefully. Red Ink Interest common exam concept hai — zaroor practice karo!</p>
+      </div>
+      <div class="video-card">
+        <div class="teacher-avatar">📅</div>
+        <div class="teacher-details">
+          <h4>CA Anshul Agrawal — Average Due Date</h4>
+          <p><span class="stars">★★★★☆</span>4.7 | Step-by-step calculation with examples</p>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=CA+Foundation+Average+Due+Date+Account+Current+free+lectures+2025" target="_blank" class="watch-btn">▶ Watch Free Lectures</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 8 -->
+  <div class="chapter-section" id="ch8">
+    <div class="ch-header" onclick="toggleChapter('body8','toggle8')">
+      <div class="ch-badge-num color-8">08</div>
+      <div class="ch-header-info">
+        <h3>Final Accounts of Sole Proprietor</h3>
+        <div class="ch-tags"><span class="tag tag-medium">Very Important</span><span class="tag tag-marks">12–18 Marks</span></div>
+      </div>
+      <div class="ch-toggle" id="toggle8">▼</div>
+    </div>
+    <div class="ch-body" id="body8">
+      <div class="explanation-box">
+        <div class="box-label">📖 Chapter Overview</div>
+        <p>Final Accounts ka matlab hai Trading Account, Profit & Loss Account, aur Balance Sheet. Yeh ek complete accounting cycle ka end result hai. Adjustments (Outstanding, Prepaid, Depreciation, Bad Debts, etc.) ke saath Final Accounts banana ICAI ka favourite question hai — 16-18 marks ka question aata hai!</p>
+      </div>
+      <div class="topics-grid">
+        <div class="topic-item"><div class="ti-dot"></div>Trading Account (Gross Profit calculation)</div>
+        <div class="topic-item"><div class="ti-dot"></div>P&L Account (Net Profit calculation)</div>
+        <div class="topic-item"><div class="ti-dot"></div>Balance Sheet (Assets = Liabilities)</div>
+        <div class="topic-item"><div class="ti-dot"></div>Outstanding Expenses & Income</div>
+        <div class="topic-item"><div class="ti-dot"></div>Prepaid Expenses & Advance Income</div>
+        <div class="topic-item"><div class="ti-dot"></div>Depreciation on Assets</div>
+        <div class="topic-item"><div class="ti-dot"></div>Bad Debts & Provision for Bad Debts</div>
+        <div class="topic-item"><div class="ti-dot"></div>Interest on Capital & Drawings</div>
+        <div class="topic-item"><div class="ti-dot"></div>Goods taken by proprietor for personal use</div>
+      </div>
+      <div class="formula-box">
+        <div class="formula-title">📐 FINAL ACCOUNTS STRUCTURE</div>
+        <span class="highlight">TRADING ACCOUNT:</span><br>
+        Gross Profit = Sales + Closing Stock − (Opening Stock + Purchases + Direct Expenses)<br><br>
+        <span class="gold">P&L ACCOUNT:</span><br>
+        Net Profit = Gross Profit + Other Income − Indirect Expenses<br><br>
+        <span class="highlight">BALANCE SHEET:</span><br>
+        Liabilities Side: Capital + Net Profit − Drawings + Long-term Loans + Current Liabilities<br>
+        Assets Side: Fixed Assets + Investments + Current Assets<br>
+        <span class="gold">Assets MUST EQUAL Liabilities (Balancing check!)</span>
+      </div>
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQ(this)">
+          <span class="q-badge">Q.1</span>
+          <p>Prepare Trading A/c from: Opening Stock ₹20,000 | Purchases ₹1,50,000 | Purchase Returns ₹5,000 | Sales ₹2,00,000 | Sales Returns ₹10,000 | Freight ₹8,000 | Closing Stock ₹25,000.</p>
+          <span class="qtoggle">▼</span>
+        </div>
+        <div class="question-solution">
+          <table class="table-simple">
+            <tr><th colspan="2">Trading Account (Dr)</th><th colspan="2">Trading Account (Cr)</th></tr>
+            <tr><td>Opening Stock</td><td class="text-right">20,000</td><td>Sales</td><td class="text-right">2,00,000</td></tr>
+            <tr><td>Purchases</td><td class="text-right">1,50,000</td><td>Less: Returns</td><td class="text-right">(10,000)</td></tr>
+            <tr><td>Less: Purchase Returns</td><td class="text-right">(5,000)</td><td><strong>Net Sales</strong></td><td class="text-right"><strong>1,90,000</strong></td></tr>
+            <tr><td><strong>Net Purchases</strong></td><td class="text-right"><strong>1,45,000</strong></td><td>Closing Stock</td><td class="text-right">25,000</td></tr>
+            <tr><td>Freight (Direct Expense)</td><td class="text-right">8,000</td><td></td><td></td></tr>
+            <tr><td>Gross Profit (c/d)</td><td class="text-right"><strong>42,000</strong></td><td></td><td></td></tr>
+            <tr class="total-row"><td><strong>Total</strong></td><td class="text-right"><strong>2,15,000</strong></td><td><strong>Total</strong></td><td class="text-right"><strong>2,15,000</strong></td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="memory-trick">
+        <span style="font-size:18px;margin-right:8px;">🧠</span>
+        <p><strong>Adjustment Trick:</strong> Har adjustment usually <strong>2 effects</strong> deta hai — ek P&L mein, ek Balance Sheet mein. Example: Outstanding Salary = P&L mein add karo (expense) + Balance Sheet mein current liability dikhao. Yeh pattern samajh lo!</p>
+      </div>
+      <div class="video-card">
+        <div class="teacher-avatar">🏢</div>
+        <div class="teacher-details">
+          <h4>CA Nitin Goel — Final Accounts (Best)</h4>
+          <p><span class="stars">★★★★★</span>4.9 | 12+ Adjustments | Real exam questions practice</p>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=CA+Foundation+Final+Accounts+Sole+Proprietor+Nitin+Goel+2025+adjustments" target="_blank" class="watch-btn">▶ Watch Free Lectures</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 9 -->
+  <div class="chapter-section" id="ch9">
+    <div class="ch-header" onclick="toggleChapter('body9','toggle9')">
+      <div class="ch-badge-num color-9">09</div>
+      <div class="ch-header-info">
+        <h3>Accounts from Incomplete Records (Single Entry)</h3>
+        <div class="ch-tags"><span class="tag tag-hard">Challenging</span><span class="tag tag-marks">6–10 Marks</span></div>
+      </div>
+      <div class="ch-toggle" id="toggle9">▼</div>
+    </div>
+    <div class="ch-body" id="body9">
+      <div class="explanation-box">
+        <div class="box-label">📖 Chapter Overview</div>
+        <p>Single Entry ya Incomplete Records mein hum aise businesses ka profit nikalte hain jinke complete double-entry accounts nahi hain. Profit do tarike se nikala jaata hai — (1) Statement of Affairs method (Capital Comparison) aur (2) Conversion Method (puri T-accounts banana).</p>
+      </div>
+      <div class="topics-grid">
+        <div class="topic-item"><div class="ti-dot"></div>Statement of Affairs (kapital at opening & closing)</div>
+        <div class="topic-item"><div class="ti-dot"></div>Profit Calculation by Capital Comparison</div>
+        <div class="topic-item"><div class="ti-dot"></div>Adjustments for Drawings & Additional Capital</div>
+        <div class="topic-item"><div class="ti-dot"></div>Conversion to Double Entry</div>
+        <div class="topic-item"><div class="ti-dot"></div>Reconstructing T-accounts (Debtors, Creditors, Cash)</div>
+      </div>
+      <div class="formula-box">
+        <div class="formula-title">📐 PROFIT CALCULATION FORMULA</div>
+        <span class="highlight">Statement of Affairs Method:</span><br>
+        Closing Capital = Closing Assets − Closing Liabilities<br>
+        Opening Capital = Opening Assets − Opening Liabilities<br><br>
+        <span class="gold">Profit = Closing Capital − Opening Capital + Drawings − Additional Capital Introduced</span><br><br>
+        <span class="highlight">Total Sales (Debtors A/c):</span><br>
+        Opening Debtors + Sales (Credit) = Cash Collected + Closing Debtors<br>
+        ∴ Sales = Cash Collected + Closing Debtors − Opening Debtors
+      </div>
+      <div class="video-card">
+        <div class="teacher-avatar">📋</div>
+        <div class="teacher-details">
+          <h4>CA Anshul Agrawal — Single Entry / Incomplete Records</h4>
+          <p><span class="stars">★★★★★</span>4.8 | Statement of Affairs + Conversion Method — dono sikhate hain</p>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=CA+Foundation+Accounts+Incomplete+Records+Single+Entry+2025+free+lectures" target="_blank" class="watch-btn">▶ Watch Free Lectures</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 10 -->
+  <div class="chapter-section" id="ch10">
+    <div class="ch-header" onclick="toggleChapter('body10','toggle10')">
+      <div class="ch-badge-num color-10">10</div>
+      <div class="ch-header-info">
+        <h3>Non-Trading Organisations (NPO)</h3>
+        <div class="ch-tags"><span class="tag tag-medium">Important</span><span class="tag tag-marks">8–12 Marks</span></div>
+      </div>
+      <div class="ch-toggle" id="toggle10">▼</div>
+    </div>
+    <div class="ch-body" id="body10">
+      <div class="explanation-box">
+        <div class="box-label">📖 Chapter Overview</div>
+        <p>Non-Profit Organizations (Clubs, Hospitals, Trusts) profit ke liye kaam nahi karte. Inke accounts alag tarike se banaye jaate hain — Receipts & Payments Account (cash basis) aur Income & Expenditure Account (accrual basis). Exam mein I&E Account banana bahut common question hai.</p>
+      </div>
+      <div class="topics-grid">
+        <div class="topic-item"><div class="ti-dot"></div>Receipts & Payments Account (R&P)</div>
+        <div class="topic-item"><div class="ti-dot"></div>Income & Expenditure Account (I&E)</div>
+        <div class="topic-item"><div class="ti-dot"></div>Capital Fund / General Fund</div>
+        <div class="topic-item"><div class="ti-dot"></div>Balance Sheet of NPO</div>
+        <div class="topic-item"><div class="ti-dot"></div>Life Membership Fees, Donations, Legacies</div>
+        <div class="topic-item"><div class="ti-dot"></div>Incidental Trading Activities</div>
+      </div>
+      <div class="formula-box">
+        <div class="formula-title">📐 R&P vs I&E — KEY DIFFERENCES</div>
+        <span class="highlight">Receipts & Payments A/c:</span><br>
+        → Cash basis | Includes Capital + Revenue | Like Cash Book<br>
+        → All receipts (Dr) and all payments (Cr) regardless of period<br><br>
+        <span class="gold">Income & Expenditure A/c:</span><br>
+        → Accrual basis | Only Revenue items | Like P&L Account<br>
+        → Current year's income and expenditure only<br>
+        → Surplus/Deficit = Net Profit/Net Loss equivalent<br><br>
+        <span class="highlight">Subscription Formula:</span><br>
+        Income from Subscription = Cash Received + Outstanding (current yr) − Outstanding (prev yr) − Advance (current yr) + Advance (prev yr)
+      </div>
+      <div class="video-card">
+        <div class="teacher-avatar">🏛️</div>
+        <div class="teacher-details">
+          <h4>CA Nitin Goel — NPO Accounts</h4>
+          <p><span class="stars">★★★★★</span>4.9 | R&P to I&E Conversion — step by step</p>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=CA+Foundation+Non+Trading+NPO+Accounts+Income+Expenditure+Receipts+Payments+2025+Nitin+Goel" target="_blank" class="watch-btn">▶ Watch Free Lectures</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 11 -->
+  <div class="chapter-section" id="ch11">
+    <div class="ch-header" onclick="toggleChapter('body11','toggle11')">
+      <div class="ch-badge-num color-11">11</div>
+      <div class="ch-header-info">
+        <h3>Consignment Accounts</h3>
+        <div class="ch-tags"><span class="tag tag-hard">Challenging</span><span class="tag tag-marks">8–12 Marks</span></div>
+      </div>
+      <div class="ch-toggle" id="toggle11">▼</div>
+    </div>
+    <div class="ch-body" id="body11">
+      <div class="explanation-box">
+        <div class="box-label">📖 Chapter Overview</div>
+        <p>Consignment mein ek party (Consignor) doosri party (Consignee) ko goods bhejtaa hai bechne ke liye — ownership Consignor ki rehti hai. Profit/Loss Consignor ke paas aata hai. Normal Loss aur Abnormal Loss ka treatment alag hota hai — yahi tricky part hai!</p>
+      </div>
+      <div class="topics-grid">
+        <div class="topic-item"><div class="ti-dot"></div>Consignor vs Consignee — Difference</div>
+        <div class="topic-item"><div class="ti-dot"></div>Proforma Invoice, Account Sales</div>
+        <div class="topic-item"><div class="ti-dot"></div>Consignment Account preparation</div>
+        <div class="topic-item"><div class="ti-dot"></div>Normal Loss vs Abnormal Loss</div>
+        <div class="topic-item"><div class="ti-dot"></div>Valuation of Unsold Stock on Consignment</div>
+        <div class="topic-item"><div class="ti-dot"></div>Del Credere Commission</div>
+      </div>
+      <div class="formula-box">
+        <div class="formula-title">📐 CONSIGNMENT — KEY FORMULAS</div>
+        <span class="highlight">Consignment Account (Consignor's Books):</span><br>
+        Dr Side: Goods sent (at cost), All Expenses (Consignor + Consignee), Abnormal Loss, Closing Stock<br>
+        Cr Side: Sales (from Account Sales), Normal Loss absorbed<br>
+        Profit/Loss = Difference (transferred to P&L)<br><br>
+        <span class="gold">Closing Stock on Consignment:</span><br>
+        = (Total Cost + Proportionate expenses excluding selling expenses) × Units unsold ÷ Total units sent<br><br>
+        <span class="highlight">Normal Loss:</span> Absorbed into cost (increases rate per unit)<br>
+        <span class="gold">Abnormal Loss:</span> Shown separately → Debit Consignment A/c, Credit Abnormal Loss A/c
+      </div>
+      <div class="video-card">
+        <div class="teacher-avatar">📦</div>
+        <div class="teacher-details">
+          <h4>CA Hardik Manchanda — Consignment Expert</h4>
+          <p><span class="stars">★★★★★</span>4.8 | Normal Loss, Abnormal Loss, Del Credere — sab explained</p>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=CA+Foundation+Consignment+Accounts+Normal+Abnormal+Loss+Hardik+Manchanda+2025" target="_blank" class="watch-btn">▶ Watch Free Lectures</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 12 -->
+  <div class="chapter-section" id="ch12">
+    <div class="ch-header" onclick="toggleChapter('body12','toggle12')">
+      <div class="ch-badge-num color-12">12</div>
+      <div class="ch-header-info">
+        <h3>Joint Venture Accounts</h3>
+        <div class="ch-tags"><span class="tag tag-hard">Tricky</span><span class="tag tag-marks">5–8 Marks</span></div>
+      </div>
+      <div class="ch-toggle" id="toggle12">▼</div>
+    </div>
+    <div class="ch-body" id="body12">
+      <div class="explanation-box">
+        <div class="box-label">📖 Chapter Overview</div>
+        <p>Joint Venture do ya zyada parties ke beech ek specific project ke liye hoti hai — ek temporary partnership. Accounts do tarike se banaye jaate hain: (1) Separate Set of Books method aur (2) Memorandum Joint Venture method. Dono co-venturers ki books mein entries aani chahiye.</p>
+      </div>
+      <div class="topics-grid">
+        <div class="topic-item"><div class="ti-dot"></div>Joint Venture vs Partnership — Difference</div>
+        <div class="topic-item"><div class="ti-dot"></div>Separate Books of Account Method</div>
+        <div class="topic-item"><div class="ti-dot"></div>Each Co-venturer Maintains Own Accounts</div>
+        <div class="topic-item"><div class="ti-dot"></div>Memorandum Joint Venture Account</div>
+        <div class="topic-item"><div class="ti-dot"></div>Co-venturer's Account format</div>
+      </div>
+      <div class="formula-box">
+        <div class="formula-title">📐 JOINT VENTURE vs PARTNERSHIP</div>
+        <span class="highlight">Joint Venture:</span> Temporary | Specific project | No firm name | Co-venturers (not partners)<br>
+        <span class="gold">Partnership:</span> Permanent/continuous | General business | Firm name | Partners<br><br>
+        <span class="highlight">Profit Sharing in JV:</span> As agreed ratio, else equally<br>
+        <span class="gold">Final settlement</span> = Each party pays/receives net balance
+      </div>
+      <div class="video-card">
+        <div class="teacher-avatar">🤝</div>
+        <div class="teacher-details">
+          <h4>CA Nitin Goel — Joint Venture Accounts</h4>
+          <p><span class="stars">★★★★★</span>4.9 | Both methods explained with full examples</p>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=CA+Foundation+Joint+Venture+Accounts+Nitin+Goel+2025+free" target="_blank" class="watch-btn">▶ Watch Free Lectures</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 13 -->
+  <div class="chapter-section" id="ch13">
+    <div class="ch-header" onclick="toggleChapter('body13','toggle13')">
+      <div class="ch-badge-num color-13">13</div>
+      <div class="ch-header-info">
+        <h3>Partnership Accounts</h3>
+        <div class="ch-tags"><span class="tag tag-hard">Very Important</span><span class="tag tag-marks">15–20 Marks</span></div>
+      </div>
+      <div class="ch-toggle" id="toggle13">▼</div>
+    </div>
+    <div class="ch-body" id="body13">
+      <div class="explanation-box">
+        <div class="box-label">📖 Chapter Overview</div>
+        <p>Partnership Accounts CA Foundation ka sabse bada aur important chapter hai — 15-20 marks ka question aksar aata hai. Inme se koi bhi topic skip mat karo: Fundamentals, Admission, Retirement/Death, aur Dissolution — sabka alag treatment hai!</p>
+      </div>
+      <div class="topics-grid">
+        <div class="topic-item"><div class="ti-dot"></div>Partnership Deed — Provisions & Absence</div>
+        <div class="topic-item"><div class="ti-dot"></div>Fixed vs Fluctuating Capital Method</div>
+        <div class="topic-item"><div class="ti-dot"></div>P&L Appropriation Account</div>
+        <div class="topic-item"><div class="ti-dot"></div>Interest on Capital, Drawings, Partners' Salary</div>
+        <div class="topic-item"><div class="ti-dot"></div>Admission: Goodwill, Revaluation, Capital Adjustment</div>
+        <div class="topic-item"><div class="ti-dot"></div>Retirement: Goodwill, Gaining Ratio, Settlement</div>
+        <div class="topic-item"><div class="ti-dot"></div>Death of a Partner — Calculation up to date of death</div>
+        <div class="topic-item"><div class="ti-dot"></div>Dissolution of Firm (Garner vs Murray)</div>
+      </div>
+      <div class="formula-box">
+        <div class="formula-title">📐 PARTNERSHIP — KEY RATIOS & FORMULAS</div>
+        <span class="highlight">Sacrificing Ratio</span> = Old Ratio − New Ratio (at time of Admission)<br>
+        <span class="gold">Gaining Ratio</span>   = New Ratio − Old Ratio (at time of Retirement)<br><br>
+        <span class="highlight">Goodwill Treatment (Admission):</span><br>
+        New Partner brings Goodwill → Distribute to OLD partners in Sacrificing Ratio<br><br>
+        <span class="gold">Revaluation A/c:</span><br>
+        Dr: Decrease in Assets, Increase in Liabilities<br>
+        Cr: Increase in Assets, Decrease in Liabilities<br>
+        Profit/Loss transferred to partners in OLD ratio<br><br>
+        <span class="highlight">Capital Method for Admission:</span><br>
+        Total Capital of New Firm = New Partner's Capital × (1 ÷ New Partner's Share)<br>
+        Each old partner's adjusted capital = Total Capital × Old Partner's New Share
+      </div>
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQ(this)">
+          <span class="q-badge">Q.1</span>
+          <p>A and B are partners sharing profits 3:2. C is admitted for 1/5 share which he takes equally from A and B. Goodwill of the firm is valued at ₹50,000. C brings his share of Goodwill in cash. Pass necessary journal entries.</p>
+          <span class="qtoggle">▼</span>
+        </div>
+        <div class="question-solution">
+          <div class="sol-step"><div class="step-num">1</div><p>C's share = 1/5. He takes equally from A and B, so A sacrifices 1/10, B sacrifices 1/10</p></div>
+          <div class="sol-step"><div class="step-num">2</div><p>C's share of Goodwill = 1/5 × ₹50,000 = <strong>₹10,000</strong></p></div>
+          <div class="sol-step"><div class="step-num">3</div><p>Sacrificing Ratio = A : B = 1/10 : 1/10 = 1:1 (equal)</p></div>
+          <div class="sol-step"><div class="step-num">4</div><p>Journal Entries:</p></div>
+          <table class="table-simple">
+            <tr><th>Entry</th><th>Debit</th><th>Credit</th></tr>
+            <tr><td>C brings goodwill in cash</td><td>Cash A/c Dr ₹10,000</td><td>C's Capital A/c ₹10,000</td></tr>
+            <tr><td>Distribute goodwill to old partners</td><td>C's Capital A/c Dr ₹10,000</td><td>A's Capital A/c ₹5,000<br>B's Capital A/c ₹5,000</td></tr>
+          </table>
+          <p style="margin-top:10px;background:#e8f5e9;padding:10px;border-radius:8px;font-size:13px;"><strong>Result:</strong> A gets ₹5,000 + B gets ₹5,000 (in 1:1 sacrificing ratio). C's final Goodwill entry = NIL (he brought cash, it's distributed).</p>
+        </div>
+      </div>
+      <div class="exam-tip">
+        <span class="et-icon">🎯</span>
+        <p><strong>Exam Tip:</strong> Partnership mein <strong>Sacrificing Ratio aur Gaining Ratio</strong> calculate karna aur goodwill ka treatment — yeh hamesha exam mein aata hai. Pehle old ratio, new ratio, sacrifice, gain calculate karo — phir journal entries. Yeh order zaroor follow karo!</p>
+      </div>
+      <div class="video-card">
+        <div class="teacher-avatar">👥</div>
+        <div class="teacher-details">
+          <h4>CA Nitin Goel — Partnership Accounts (Complete Series)</h4>
+          <p><span class="stars">★★★★★</span>5.0 | Fundamentals se Dissolution tak — Best in India for CA Foundation</p>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=CA+Foundation+Partnership+Accounts+Nitin+Goel+Admission+Retirement+Dissolution+2025" target="_blank" class="watch-btn">▶ Watch Free Lectures</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 14 -->
+  <div class="chapter-section" id="ch14">
+    <div class="ch-header" onclick="toggleChapter('body14','toggle14')">
+      <div class="ch-badge-num color-14">14</div>
+      <div class="ch-header-info">
+        <h3>Company Accounts (Shares & Debentures)</h3>
+        <div class="ch-tags"><span class="tag tag-hard">Very Important</span><span class="tag tag-marks">12–18 Marks</span></div>
+      </div>
+      <div class="ch-toggle" id="toggle14">▼</div>
+    </div>
+    <div class="ch-body" id="body14">
+      <div class="explanation-box">
+        <div class="box-label">📖 Chapter Overview</div>
+        <p>Company Accounts mein hum shares aur debentures issue karne ki accounting seekhte hain. Yeh chapter Partnership ke baad sabse zyada marks ka hai. Share forfeiture aur reissue, premium aur discount pe issue — yeh sab important topics hain. Debentures ka redemption bhi aata hai.</p>
+      </div>
+      <div class="topics-grid">
+        <div class="topic-item"><div class="ti-dot"></div>Types of Shares (Equity, Preference)</div>
+        <div class="topic-item"><div class="ti-dot"></div>Issue of Shares at Par, Premium, Discount</div>
+        <div class="topic-item"><div class="ti-dot"></div>Pro-rata Allotment & Calls in Arrears</div>
+        <div class="topic-item"><div class="ti-dot"></div>Forfeiture of Shares</div>
+        <div class="topic-item"><div class="ti-dot"></div>Reissue of Forfeited Shares</div>
+        <div class="topic-item"><div class="ti-dot"></div>Capital Reserve Calculation</div>
+        <div class="topic-item"><div class="ti-dot"></div>Types of Debentures</div>
+        <div class="topic-item"><div class="ti-dot"></div>Issue & Redemption of Debentures</div>
+      </div>
+      <div class="formula-box">
+        <div class="formula-title">📐 SHARES — KEY ENTRIES & FORMULAS</div>
+        <span class="highlight">Issue at Premium (say ₹10 share + ₹2 premium):</span><br>
+        On Application: Bank Dr → Share Application A/c Cr<br>
+        On Allotment: Share Application Dr + Allotment Dr → Share Capital Cr + Securities Premium Cr<br>
+        On Calls: Calls A/c Dr → Share Capital Cr<br><br>
+        <span class="gold">Forfeiture Entry:</span><br>
+        Share Capital A/c Dr (called up amount) → Calls in Arrears Cr (unpaid) + Share Forfeiture A/c Cr (amount paid)<br><br>
+        <span class="highlight">Capital Reserve (after reissue of forfeited shares):</span><br>
+        Capital Reserve = Amount in Share Forfeiture A/c − Loss on Reissue<br>
+        Loss on Reissue = (Issue Price of reissue) − (Reissue Price received)
+      </div>
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQ(this)">
+          <span class="q-badge">Q.1</span>
+          <p>XYZ Ltd issued 10,000 shares of ₹10 each at ₹12 (₹2 premium). Payable: Application ₹4, Allotment ₹5 (incl. premium), First call ₹3. All money received. Show journal entries.</p>
+          <span class="qtoggle">▼</span>
+        </div>
+        <div class="question-solution">
+          <table class="table-simple">
+            <tr><th>Stage</th><th>Journal Entry</th><th class="text-right">Dr ₹</th><th class="text-right">Cr ₹</th></tr>
+            <tr><td>Application</td><td>Bank A/c Dr → Share Application A/c Cr<br>(10,000 × ₹4)</td><td class="text-right">40,000</td><td class="text-right">40,000</td></tr>
+            <tr><td>On Allotment (Transfer)</td><td>Share Application A/c Dr → Share Capital A/c Cr<br>(10,000 × ₹4)</td><td class="text-right">40,000</td><td class="text-right">40,000</td></tr>
+            <tr><td>Allotment due</td><td>Share Allotment A/c Dr → Share Capital A/c Cr (₹3) + Securities Premium Cr (₹2)<br>(10,000 × ₹5)</td><td class="text-right">50,000</td><td class="text-right">50,000</td></tr>
+            <tr><td>Allotment receipt</td><td>Bank A/c Dr → Share Allotment A/c Cr</td><td class="text-right">50,000</td><td class="text-right">50,000</td></tr>
+            <tr><td>First Call due</td><td>Share First Call A/c Dr → Share Capital A/c Cr<br>(10,000 × ₹3)</td><td class="text-right">30,000</td><td class="text-right">30,000</td></tr>
+            <tr><td>First Call receipt</td><td>Bank A/c Dr → Share First Call A/c Cr</td><td class="text-right">30,000</td><td class="text-right">30,000</td></tr>
+          </table>
+          <p style="margin-top:10px;background:#e3f2fd;padding:10px;border-radius:8px;font-size:13px;"><strong>Verification:</strong> Share Capital = 10,000 × ₹10 = ₹1,00,000 ✓ | Securities Premium = 10,000 × ₹2 = ₹20,000 ✓</p>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="teacher-avatar">🏦</div>
+        <div class="teacher-details">
+          <h4>CA Hardik Manchanda — Company Accounts Expert</h4>
+          <p><span class="stars">★★★★★</span>4.9 | Shares Issue, Forfeiture, Reissue, Debentures — Complete</p>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=CA+Foundation+Company+Accounts+Shares+Debentures+Hardik+Manchanda+2025+forfeiture+reissue" target="_blank" class="watch-btn">▶ Watch Free Lectures</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 15 -->
+  <div class="chapter-section" id="ch15">
+    <div class="ch-header" onclick="toggleChapter('body15','toggle15')">
+      <div class="ch-badge-num color-15">15</div>
+      <div class="ch-header-info">
+        <h3>Basic Accounting Ratios</h3>
+        <div class="ch-tags"><span class="tag tag-easy">Scoring</span><span class="tag tag-marks">5–8 Marks</span></div>
+      </div>
+      <div class="ch-toggle" id="toggle15">▼</div>
+    </div>
+    <div class="ch-body" id="body15">
+      <div class="explanation-box">
+        <div class="box-label">📖 Chapter Overview</div>
+        <p>Accounting Ratios ek simple lekin scoring chapter hai — formulas yaad karo aur calculate karo! Yeh ratios financial health check karne ke tools hain. CA Foundation mein usually 5-8 marks ke simple calculation questions aate hain.</p>
+      </div>
+      <div class="topics-grid">
+        <div class="topic-item"><div class="ti-dot"></div>Current Ratio (Liquidity)</div>
+        <div class="topic-item"><div class="ti-dot"></div>Quick Ratio / Acid Test Ratio</div>
+        <div class="topic-item"><div class="ti-dot"></div>Debt-Equity Ratio (Solvency)</div>
+        <div class="topic-item"><div class="ti-dot"></div>Gross Profit Ratio (Profitability)</div>
+        <div class="topic-item"><div class="ti-dot"></div>Net Profit Ratio</div>
+        <div class="topic-item"><div class="ti-dot"></div>Return on Investment (ROI)</div>
+        <div class="topic-item"><div class="ti-dot"></div>Stock Turnover Ratio</div>
+        <div class="topic-item"><div class="ti-dot"></div>Debtors Turnover Ratio</div>
+      </div>
+      <div class="formula-box">
+        <div class="formula-title">📐 IMPORTANT RATIO FORMULAS</div>
+        <span class="highlight">Current Ratio</span>      = Current Assets ÷ Current Liabilities   [Ideal: 2:1]<br>
+        <span class="gold">Quick Ratio</span>         = (Current Assets − Stock − Prepaid) ÷ Current Liabilities   [Ideal: 1:1]<br>
+        <span class="highlight">Debt-Equity Ratio</span>  = Long Term Debt ÷ Shareholders' Equity<br>
+        <span class="gold">GP Ratio</span>            = (Gross Profit ÷ Net Sales) × 100<br>
+        <span class="highlight">NP Ratio</span>            = (Net Profit after Tax ÷ Net Sales) × 100<br>
+        <span class="gold">Stock Turnover</span>      = COGS ÷ Average Inventory (or Net Sales ÷ Avg Stock)<br>
+        <span class="highlight">Debtors Turnover</span>   = Net Credit Sales ÷ Average Debtors<br>
+        <span class="gold">Debtors Collection Period</span> = 365 days ÷ Debtors Turnover Ratio
+      </div>
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQ(this)">
+          <span class="q-badge">Q.1</span>
+          <p>From the following, calculate: (1) Current Ratio (2) Quick Ratio (3) GP Ratio. Current Assets ₹2,00,000 | Stock ₹60,000 | Current Liabilities ₹80,000 | Net Sales ₹5,00,000 | COGS ₹3,50,000</p>
+          <span class="qtoggle">▼</span>
+        </div>
+        <div class="question-solution">
+          <div class="sol-step"><div class="step-num">1</div><p><strong>Current Ratio</strong> = ₹2,00,000 ÷ ₹80,000 = <strong>2.5 : 1</strong> (Good — above ideal 2:1)</p></div>
+          <div class="sol-step"><div class="step-num">2</div><p><strong>Quick Ratio</strong> = (₹2,00,000 − ₹60,000) ÷ ₹80,000 = ₹1,40,000 ÷ ₹80,000 = <strong>1.75 : 1</strong> (Very good — above 1:1)</p></div>
+          <div class="sol-step"><div class="step-num">3</div><p><strong>Gross Profit</strong> = Net Sales − COGS = ₹5,00,000 − ₹3,50,000 = ₹1,50,000<br><strong>GP Ratio</strong> = (₹1,50,000 ÷ ₹5,00,000) × 100 = <strong>30%</strong></p></div>
+        </div>
+      </div>
+      <div class="exam-tip">
+        <span class="et-icon">🎯</span>
+        <p><strong>Exam Tip:</strong> Ratios yaad karne ka trick: <strong>Liquidity ratios mein Current Liabilities denominator mein rehta hai. Profitability ratios mein Net Sales denominator mein.</strong> Ideal ratios (2:1 current, 1:1 quick) zaroor yaad rakho!</p>
+      </div>
+      <div class="video-card">
+        <div class="teacher-avatar">📈</div>
+        <div class="teacher-details">
+          <h4>CA Anshul Agrawal — Accounting Ratios</h4>
+          <p><span class="stars">★★★★★</span>4.8 | Saare ratios ek hi lecture mein cover — quick revision ready</p>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=CA+Foundation+Accounting+Ratios+basic+2025+free+lectures" target="_blank" class="watch-btn">▶ Watch Free Lectures</a>
+      </div>
+    </div>
+  </div>
+
+  </div><!-- end chapters-wrapper -->
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>📚 <strong>CA Foundation Accounts 2025-26</strong> | ICAI New Scheme | All Chapters Covered</p>
+    <p style="margin-top:8px;">Best Teachers: <strong>CA Nitin Goel</strong> | <strong>CA Anshul Agrawal</strong> | <strong>CA Hardik Manchanda</strong></p>
+    <p style="margin-top:8px;font-size:11px;">⚠️ Always verify with ICAI official website (icai.org) for latest syllabus updates. Study Material from ICAI is primary reference.</p>
+  </footer>
+
+</div><!-- end main-content -->
+
+<script>
+// ===== SIDEBAR TOGGLE =====
+function openSidebar() {
+  document.getElementById('sidebar').classList.add('open');
+  document.getElementById('overlay').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+// ===== CHAPTER ACCORDION =====
+function toggleChapter(bodyId, toggleId) {
+  const body = document.getElementById(bodyId);
+  const toggle = document.getElementById(toggleId);
+  const isVisible = body.classList.contains('visible');
+  body.classList.toggle('visible', !isVisible);
+  toggle.classList.toggle('open', !isVisible);
+}
+
+// ===== QUESTION TOGGLE =====
+function toggleQ(header) {
+  const sol = header.nextElementSibling;
+  const tog = header.querySelector('.qtoggle');
+  const isShow = sol.classList.contains('show');
+  sol.classList.toggle('show', !isShow);
+  if(tog) tog.classList.toggle('open', !isShow);
+}
+
+// ===== PROGRESS TRACKING =====
+const visited = new Set();
+function markChapter(num) {
+  visited.add(num);
+  updateProgress();
+  // highlight sidebar link
+  const links = document.querySelectorAll('#sidebarNav a');
+  links.forEach((link, i) => {
+    if(visited.has(i+1)) link.classList.add('active');
+  });
+}
+function updateProgress() {
+  const pct = (visited.size / 15) * 100;
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('progressText').textContent = visited.size + ' of 15 chapters opened';
+}
+
+// ===== SCROLL SPY =====
+const chapterIds = ['ch1','ch2','ch3','ch4','ch5','ch6','ch7','ch8','ch9','ch10','ch11','ch12','ch13','ch14','ch15'];
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      const id = entry.target.id;
+      const num = parseInt(id.replace('ch',''));
+      markChapter(num);
+      const links = document.querySelectorAll('#sidebarNav a');
+      links.forEach((l, i) => l.classList.toggle('active', i+1 === num));
+    }
+  });
+}, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+
+chapterIds.forEach(id => {
+  const el = document.getElementById(id);
+  if(el) observer.observe(el);
+});
+
+// ===== AUTO-OPEN FIRST CHAPTER =====
+window.addEventListener('load', () => {
+  toggleChapter('body1', 'toggle1');
+  markChapter(1);
+});
+</script>
+
+</body>
+</html>
